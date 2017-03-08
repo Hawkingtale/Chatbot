@@ -155,5 +155,12 @@ public class ChatController
 			chatView.displayMessage(currentException.getMessage());
 		}
 
+		public String searchTwitter(String name)
+		{
+			String result = "The top word used is: " + name + " is ";
+			result += weebBot.getMostCommonWord(name);
+			
+			return "";
+		}
 	}
 

@@ -54,7 +54,7 @@ public class CTECHTwitter
 	
 	public String getMostCommonWord()
 	{
-		return null;
+		return "";
 	}
 	
 }
