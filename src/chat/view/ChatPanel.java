@@ -99,5 +99,29 @@ public class ChatPanel extends JPanel
 				chatField.setText("");
 			}
 		});
+
+			{
+			
+			}	
+			searchTwitterButton.addActionListener(newActionListener()
+			{
+				public void actionPerformed(ActionEvent click)
+				{
+					String username = chatField.getText();
+					chatDisplay.append(baseController.searchTwitter(username));
+				}
+			});
+				
+				
 	}
+
+				
+				
+				
+				
+				
+				
+				
+				
+				
 }
