@@ -4,7 +4,10 @@ import chat.controller.ChatController;
 import twitter4j.Twitter;
 import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
+import twitter4j.GeoLocation;
 import twitter4j.Paging;
+import twitter4j.Query;
+import twitter4j.QueryResult;
 import twitter4j.Status;
 import java.util.List;
 import java.util.Scanner;
@@ -94,7 +97,7 @@ public class CTECHTwitter
 		}
 	}
 	
-	public String getMostCommonWord()
+	public String getMostCommonWord(String username)
 	{
 	String results = "";
 	collectTweets(results);
@@ -223,7 +226,29 @@ public class CTECHTwitter
 
 	}
 	
-	
+	public String interigateTwitter()
+	{
+		String info = "";
+		Query query = new Query("JHS");
+		query.setCount(100);
+		query.setGeoCode(new GeoLocation(40.5743, 111.8882), 5,Query.KILOMETERS);
+		query.setSince("2017-3-14");
+		
+		try
+		{
+			QueryResult result = weebBot.search(query);
+			info += "Count : " + result.getTweets().size() + "\n";
+			for(Status tweet : result.getTweets())
+			{
+				info += "0" + tweet.getUser().getName() + ": " + tweet.getText() + "\n";
+			}
+		}
+		catch(TwitterException error)
+		{
+			baseController.handleErrors(error);
+		}
+		return info;
+	}
 	
 	
 	
