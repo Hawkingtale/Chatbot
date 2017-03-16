@@ -157,10 +157,9 @@ public class ChatController
 
 		public String searchTwitter(String name)
 		{
-			String result = "The top word used is: " + name + " is ";
-			result += weebBot.getMostCommonWord(name);
+			String result = weebBot.investigation();
 			
-			return "";
+			return result;
 		}
 	}
 
